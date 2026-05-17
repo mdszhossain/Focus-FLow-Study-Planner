@@ -1,6 +1,6 @@
 let header = document.querySelector("#header-container");
 header.innerHTML = `
-    <section class="header-box w-8/12 rounded-2xl m-auto mt-10 flex items-center">
+    <section class="header-box w-11/12 rounded-2xl m-auto mt-10 flex items-center">
         <div class="w-full">
             <div id="logo-container" class="flex items-center gap-5 ml-14">
                 <div class="logo flex justify-center w-15 h-15 items-center rounded-xl">
@@ -56,7 +56,6 @@ subjectContainer.innerHTML = `
 `;
 
 let subjectBoxes = document.querySelectorAll(".subject-box");
-console.log(subjectBoxes);
 
 for(subjectBox of subjectBoxes) {
     subjectBox.addEventListener("click", (event) => {
