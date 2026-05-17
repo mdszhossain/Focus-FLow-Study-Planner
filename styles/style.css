@@ -16,7 +16,56 @@ body {
 }
 
 .main-box {
-    
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 15px 20px rgb(221, 221, 221);
+}
+.progress-bar-container {
+    display: flex;
+    justify-content: space-between;
+}
+.subject-box {
+    border: 2px solid #E2E8F0;
+}
+
+.mathematics {
+    border: 2px solid #2196F3;
+    background-color: #ECF5FE;
+}
+.science {
+    border: 2px solid #4CAF50;
+    background-color: #ECF5FE;
+}
+.english {
+    border: 2px solid #F44336;
+    background-color: #FDEFEF;
+}
+.history {
+    border: 2px solid #795549;
+    background-color: #F3F0F0;
+}
+.computer-science {
+    border: 2px solid #3F51B5;
+    background-color: #EEF0F9;
+}
+.chemistry {
+    border: 2px solid #FF9800;
+    background-color: #FEF5EB;
+}
+
+.subject-box {
+    transition: transform 0.2s ease;
+}
+.subject-box:hover {
+    transform: scale(1.04);
+    cursor: pointer;
+}
+.clicked {
+    transform: scale(1.04);
+    box-shadow: 0px 2px 10px rgb(231, 231, 231);
+}
+.subject-box p, .subject-box img {
+    pointer-events: none;
 }
 
 @media screen and (max-width: 640px) {
@@ -32,7 +81,7 @@ body {
         margin: auto;
     }
     .header-box {
-        height: 400px;
+        height: 420px;
     }
     .quot-para {
         width: 90%;

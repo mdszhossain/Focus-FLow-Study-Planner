@@ -20,8 +20,22 @@
     <body>
         <header id="header-container"></header>
         <main>
-            <section class="main-box w-8/12 rounded-2xl m-auto mt-10 flex items-center">
+            <section class="main-box w-8/12 rounded-2xl m-auto mt-10">
+                <div class="w-full">
+                    <div class="progress-bar-container w-full">
+                        <div>Progress</div>
+                        <div><span>0</span> / <span>0</span> <span>completed</span></div>
+                    </div>
+                </div>
+                <div class="progress-bar-wrapper w-full bg-gray-200 rounded-full h-3 mt-3 overflow-hidden">
+                    <div class="progress-bar-fill h-full bg-blue-600 rounded-full" style="width: 100%"></div>
+                </div>
 
+                <div class="text-md mt-5">Select Subject</div>
+
+                <section class="subject-container pt-4 gap-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+                    
+                </section>
             </section>
         </main>
         <footer></footer>
