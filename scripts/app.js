@@ -46,7 +46,7 @@ subjectContainer.innerHTML = `
 
     <div type="button" id="computer-science" class="subject-box bg-[#FFFFFF] rounded-xl flex flex-col items-center gap-2 p-4">
         <img class="w-8" src="./assets/icons/computer-science.png" alt="computer-science">
-        <p>Computer Science</p>
+        <p>CSE</p>
     </div>
 
     <div id="chemistry" class="subject-box bg-[#FFFFFF] rounded-xl flex flex-col items-center gap-2 p-4">
