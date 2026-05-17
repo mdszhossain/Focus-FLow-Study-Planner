@@ -1,0 +1,57 @@
+body {
+    background-color: #F1F5F9;
+}
+
+.header-box {
+    background-color: white;
+    height: 300px;
+    box-shadow: 0px 15px 20px rgb(221, 221, 221);
+}
+
+.logo {
+    background-color: #7F46FE;
+}
+.quot-box {
+    border: 1px solid #E0E7FF;
+}
+
+@media screen and (max-width: 640px) {
+    .logo-heading {
+        font-size: 1.5rem;
+    }
+    #logo-container {
+        margin-left: 0px;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 2rem;
+        width: 90%;
+        margin: auto;
+    }
+    .header-box {
+        height: 400px;
+    }
+    .quot-para {
+        width: 90%;
+        margin: auto;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    #logo-container {
+        margin-left: 0px;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 2rem;
+        width: 90%;
+        margin: auto;
+    }
+
+    .header-box {
+        height: 400px;
+    }
+    .quot-para {
+        width: 90%;
+        margin: auto;
+    }
+}
