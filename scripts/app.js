@@ -44,7 +44,7 @@ subjectContainer.innerHTML = `
         <p>History</p>
     </div>
 
-    <div type="button" id="computer-science" class="subject-box bg-[#FFFFFF] rounded-xl flex flex-col items-center gap-2 p-4">
+    <div type="button" id="cse" class="subject-box bg-[#FFFFFF] rounded-xl flex flex-col items-center gap-2 p-4">
         <img class="w-8" src="./assets/icons/computer-science.png" alt="computer-science">
         <p>CSE</p>
     </div>
@@ -164,7 +164,7 @@ function taskCreation(event, taskId) {
             tagTask.style.border = "2px solid #E2E8F0"
             tagTask.style.borderLeft = "7px solid #795549"
             break;
-        case "computer-science":
+        case "cse":
             tagTask.querySelector("span").classList.add("cseTag");
             tagTask.style.border = "2px solid #E2E8F0"
             tagTask.style.borderLeft = "7px solid #3F51B5"
