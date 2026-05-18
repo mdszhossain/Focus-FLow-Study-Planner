@@ -57,15 +57,132 @@ subjectContainer.innerHTML = `
 
 let subjectBoxes = document.querySelectorAll(".subject-box");
 
-for(subjectBox of subjectBoxes) {
+for (subjectBox of subjectBoxes) {
     subjectBox.addEventListener("click", (event) => {
-        let clickClass = event.target.getAttribute("id");
-        event.target.classList.add(clickClass, "clicked");
-        for(let i = 0; i<subjectBoxes.length; i++) {
-            if(subjectBoxes[i].getAttribute("id") != clickClass) {
-                subjectBoxes[i].classList.remove("clicked");
-                subjectBoxes[i].classList.remove(subjectBoxes[i].getAttribute("id"));
-            }
-        }
+        activeSubject(event);
     });
 }
+
+
+function activeSubject(event) {
+    let clickClass = event.target.getAttribute("id");
+    event.target.classList.add(clickClass, "clicked");
+    for (let i = 0; i < subjectBoxes.length; i++) {
+        if (subjectBoxes[i].getAttribute("id") != clickClass) {
+            subjectBoxes[i].classList.remove("clicked");
+            subjectBoxes[i].classList.remove(
+                subjectBoxes[i].getAttribute("id"),
+            );
+        }
+    }
+}
+
+let taskInput = document.querySelector(".task-input");
+taskInput.innerHTML = `
+    <input class="input-task w-full h-15 rounded-xl p-5 sm:w-8/12 md:h-12 md:w-9/12 lg:w-10/12" type="text" name="" id="" placeholder="Enter a new task">
+    <button class="add-task-btn">+ Add Task</button>
+`;
+
+let noTaskSpace = document.querySelector(".no-task-space");
+noTaskSpace.innerHTML = `
+    <i class="clock-icon fa-regular fa-clock text-5xl text-[#96A6BC] mt-10"></i>
+    <p class="text-[#96A6BC]">No tasks yet. Add your first task to get started!</p>
+`;
+
+let taskList = document.querySelector(".task-list");
+let num = 0;
+
+function completeCalculation() {
+    let clickedSubject = document.querySelector(".clicked");
+    let subjectName = clickedSubject.getAttribute("id");
+    let completeNum = document.querySelector(".complete-num");
+    num++;
+    completeNum.innerText = num;
+}
+
+function taskValueIdentify() {
+    let taskItem = document.querySelector(".input-task");
+    let taskValue = taskItem.value;
+    return taskValue;
+}
+
+function subjectNameIdentify() {
+    let subject = document.querySelector(".clicked").getAttribute("id");
+    return subject;
+}
+
+function taskCreation(event, taskId) {
+    let taskValue = taskValueIdentify();
+    let subjectName = subjectNameIdentify();
+    let taskDiv = document.createElement("div");
+    taskDiv.classList.add(
+        "task",
+        "w-full",
+        "h-25",
+        "bg-[#F8FAFC]",
+        "flex",
+        "items-center",
+        "justify-between",
+        "gap-5",
+        "p-5",
+        "rounded-xl",
+        "mb-5"
+    );
+    taskDiv.setAttribute("id", taskId);
+    taskDiv.innerHTML = `
+    <div class="task-left-content flex gap-10 items-center">
+        <input class="custom-checkmark rounded-xl" type="checkbox" name="" id="">
+        <label for="">
+            <p class="label-title text-xl mb-2">${taskValue}</p>
+            <span class="tag text-white p-1 rounded-full px-5 text-center text-sm">${subjectName}</span>
+        </label>
+    </div>
+    <div class="delete-icon h-10 w-10 text-white rounded-lg flex items-center justify-center"><i class="fa-regular fa-trash-can text-xl"></i></div>
+    `;
+    taskList.append(taskDiv);
+    document.querySelector(".input-task").value = "";
+    let tagTask = document.getElementById(taskId);
+    console.log(tagTask);
+    switch(subjectName) {
+        case "mathematics":
+            tagTask.querySelector("span").classList.add("mathTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #2196F3"
+            break;
+        case "science":
+            tagTask.querySelector("span").classList.add("scienceTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #4CAF50"
+            break;
+        case "english":
+            tagTask.querySelector("span").classList.add("engTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #F44336"
+            break;
+        case "history":
+            tagTask.querySelector("span").classList.add("historyTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #795549"
+            break;
+        case "computer-science":
+            tagTask.querySelector("span").classList.add("cseTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #3F51B5"
+            break;
+        case "chemistry":
+            tagTask.querySelector("span").classList.add("chemTag");
+            tagTask.style.border = "2px solid #E2E8F0"
+            tagTask.style.borderLeft = "7px solid #FF9800"
+            break;
+    }
+}
+
+let taskId = 0;
+
+let addTaskBtn = document.querySelector(".add-task-btn");
+addTaskBtn.addEventListener("click", function (event) {
+    noTaskSpace.classList.add("hidden");
+    completeCalculation(num);
+    taskId++;
+    taskCreation(event, taskId);
+});

@@ -67,6 +67,82 @@ body {
 .subject-box p, .subject-box img {
     pointer-events: none;
 }
+.input-task {
+    border: 2px solid #E2E8F0;
+}
+.input-task:focus {
+    outline: none;
+    border: 2px solid #615fff;
+}
+
+.task-input {
+    justify-content: space-between;
+}
+.clock-icon {
+    opacity: 0.5;
+}
+/* .task {
+    border: 2px solid #E2E8F0;
+} */
+
+.add-task-btn {
+  background: linear-gradient(to right, #0000ff, #8000ff); /* blue → purple */
+  color: white;              /* text color */
+  border: none;              /* remove default border */
+  border-radius: 8px;        /* rounded corners */
+  padding: 12px 24px;        /* size */
+  font-size: 16px;           /* text size */
+  cursor: pointer;           /* pointer on hover */
+  display: flex;             /* align icon + text */
+  align-items: center;
+  gap: 8px;                  /* space between icon and text */
+  transition: all 0.3s ease; /* smooth hover effect */
+}
+
+.add-btn:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* glow on hover */
+}
+
+/* 2. Style the custom visual circle */
+.custom-checkmark {
+    height: 24px;
+    width: 24px;
+    min-width: 24px; /* Prevents shrinking if text gets long */
+    border-radius: 50%; /* Makes it a circle */
+    border: 2px solid #10b981; /* Green border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+}
+.delete-icon {
+    color: #FA2C36;
+    transition: background-color 0.4s ease;
+}
+.delete-icon:hover {
+    background-color: #ffd2d4;
+    cursor: pointer;
+}
+.mathTag {
+    background-color: #2196F3;
+}
+.scienceTag {
+    background-color: #4CAF50;
+}
+.engTag {
+    background-color: #F44336;
+}
+.historyTag {
+    background-color: #795549;
+}
+.cseTag {
+    background-color: #3F51B5;
+}
+.chemTag {
+    background-color: #FF9800;
+}
+
 
 @media screen and (max-width: 640px) {
     .logo-heading {
