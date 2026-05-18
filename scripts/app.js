@@ -247,4 +247,4 @@ clearBtn.addEventListener("click", function() {
     clearBtn.classList.add("hidden");
     taskCompNum = 0;
     document.getElementById("task-comp-num").innerText = taskCompNum;
-})
+});
