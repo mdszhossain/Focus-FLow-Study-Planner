@@ -64,9 +64,10 @@ body {
     transform: scale(1.04);
     box-shadow: 0px 2px 10px rgb(231, 231, 231);
 }
-.subject-box p, .subject-box img {
+.subject-box p, .subject-box img, .dlt-icon {
     pointer-events: none;
 }
+
 .input-task {
     border: 2px solid #E2E8F0;
 }
@@ -141,6 +142,11 @@ body {
 }
 .chemTag {
     background-color: #FF9800;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    color: #888888; /* Optional: Fades out the text slightly */
 }
 
 

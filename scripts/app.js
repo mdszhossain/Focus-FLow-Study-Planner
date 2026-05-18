@@ -63,7 +63,6 @@ for (subjectBox of subjectBoxes) {
     });
 }
 
-
 function activeSubject(event) {
     let clickClass = event.target.getAttribute("id");
     event.target.classList.add(clickClass, "clicked");
@@ -126,7 +125,7 @@ function taskCreation(event, taskId) {
         "gap-5",
         "p-5",
         "rounded-xl",
-        "mb-5"
+        "mb-5",
     );
     taskDiv.setAttribute("id", taskId);
     taskDiv.innerHTML = `
@@ -137,52 +136,115 @@ function taskCreation(event, taskId) {
             <span class="tag text-white p-1 rounded-full px-5 text-center text-sm">${subjectName}</span>
         </label>
     </div>
-    <div class="delete-icon h-10 w-10 text-white rounded-lg flex items-center justify-center"><i class="fa-regular fa-trash-can text-xl"></i></div>
+    <div class="delete-icon h-10 w-10 text-white rounded-lg flex items-center justify-center"><i class="dlt-icon fa-regular fa-trash-can text-xl"></i></div>
     `;
     taskList.append(taskDiv);
     document.querySelector(".input-task").value = "";
     let tagTask = document.getElementById(taskId);
-    console.log(tagTask);
-    switch(subjectName) {
+    switch (subjectName) {
         case "mathematics":
             tagTask.querySelector("span").classList.add("mathTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #2196F3"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #2196F3";
             break;
         case "science":
             tagTask.querySelector("span").classList.add("scienceTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #4CAF50"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #4CAF50";
             break;
         case "english":
             tagTask.querySelector("span").classList.add("engTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #F44336"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #F44336";
             break;
         case "history":
             tagTask.querySelector("span").classList.add("historyTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #795549"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #795549";
             break;
         case "cse":
             tagTask.querySelector("span").classList.add("cseTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #3F51B5"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #3F51B5";
             break;
         case "chemistry":
             tagTask.querySelector("span").classList.add("chemTag");
-            tagTask.style.border = "2px solid #E2E8F0"
-            tagTask.style.borderLeft = "7px solid #FF9800"
+            tagTask.style.border = "2px solid #E2E8F0";
+            tagTask.style.borderLeft = "7px solid #FF9800";
             break;
     }
 }
 
 let taskId = 0;
+let count = 1;
+let taskCount = [];
 
 let addTaskBtn = document.querySelector(".add-task-btn");
 addTaskBtn.addEventListener("click", function (event) {
     noTaskSpace.classList.add("hidden");
     completeCalculation(num);
     taskId++;
+    taskCount.push(count);
     taskCreation(event, taskId);
 });
+
+taskList.addEventListener("click", function (event) {
+    if (
+        event.target.classList.contains("delete-icon") ||
+        event.target.closest(".delete-icon")
+    ) {
+        event.stopPropagation();
+        deleteTask(event);
+    }
+});
+
+function deleteTask(event) {
+    event.target.parentElement.remove();
+    taskCount.pop();
+    if (taskCount.length === 0) {
+        noTaskSpace.classList.remove("hidden");
+    }
+    num--;
+    let completeNum = document.querySelector(".complete-num");
+    completeNum.innerText = num;
+}
+
+let taskCompNum = 0;
+taskList.addEventListener("change", function () {
+    if (event.target.type === "checkbox") {
+        const taskItem = event.target.closest(".task");
+        const taskText = taskItem.querySelector(".label-title");
+        let clearBtn = document.querySelector(".clr-btn-container");
+        
+        if (event.target.checked) {
+            taskItem.classList.add("task-completed");
+            taskText.classList.add("completed-task"); // Strike through
+            taskCompNum++;
+            document.getElementById("task-comp-num").innerText = taskCompNum;
+            clearBtnCreate();
+            document.getElementById("clr-count").innerText = taskCompNum;
+        } else {
+            taskText.classList.remove("completed-task"); // Normal text
+            taskCompNum--;
+            document.getElementById("task-comp-num").innerText = taskCompNum;
+            if(taskCompNum == 0) {
+                clearBtn.classList.add("hidden");
+            }
+        }
+    }
+});
+let clearBtn = document.querySelector(".clr-btn-container");
+function clearBtnCreate() {
+    clearBtn.classList.remove("hidden");
+}
+
+clearBtn.addEventListener("click", function() {
+    let completedTask = document.querySelectorAll(".task-completed")
+    for(completeTask of completedTask) {
+        completeTask.remove();
+    }
+    document.getElementById("clr-count").innerText = "0";
+    clearBtn.classList.add("hidden");
+    taskCompNum = 0;
+    document.getElementById("task-comp-num").innerText = taskCompNum;
+})

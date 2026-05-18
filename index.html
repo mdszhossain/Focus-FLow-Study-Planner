@@ -25,7 +25,7 @@
                 <div class="w-full">
                     <div class="progress-bar-container w-full">
                         <div>Progress</div>
-                        <div><span>0</span> / <span class="complete-num">0</span> <span>completed</span></div>
+                        <div><span id="task-comp-num">0</span> / <span class="complete-num">0</span> <span>completed</span></div>
                     </div>
                 </div>
                 
@@ -47,6 +47,11 @@
 
                 <!-- Task List -->
                 <section class="task-list"></section>
+
+                <div class="clr-btn-container flex bg-[#FEF2F2] text-center rounded-xl p-4 text-[#F44336] font-bold hidden">
+                    <button id="clear-btn" class="clr-btn m-auto">Clear <span id="clr-count">0</span> Completed Task</button>
+                </div>
+
             </section>
         </main>
         <footer></footer>
