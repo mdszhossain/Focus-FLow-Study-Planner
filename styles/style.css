@@ -164,6 +164,9 @@ body {
         margin: auto;
         font-size: 1rem;
     }
+    .label-title {
+        font-size: 0.85rem;
+    }
 }
 
 @media (min-width: 641px) and (max-width: 768px) {
